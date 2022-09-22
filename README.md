@@ -1,3 +1,3 @@
 # HackerRank-Solutions
 
-Solutions to My https://www.hackerrank.com/ Learnings.
+My submissions to [HackerRank](https://www.hackerrank.com/) Challenges.
