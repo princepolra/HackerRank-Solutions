@@ -13,35 +13,57 @@ Sample Output 1:
 Anagrams
 */
 
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
-public class Anagrams {
-
-   static boolean isAnagram(String A, String B) {
-	   A=A.toLowerCase();
-	   B=B.toLowerCase();
-	   boolean f = false;
-	  char[] c = A.toCharArray();
-	  Arrays.sort(c);
-	  char[] d = B.toCharArray();
-	  Arrays.sort(d);
-	  String a = new String (c);
+public class Solution {
+    static boolean isAnagram(String A, String B) {
+         A=A.toLowerCase();
+       B=B.toLowerCase();
+       boolean f = false;
+      char[] c = A.toCharArray();
+      
+      for (int i = 0; i < c.length; i++)
+      {  
+          for (int j = i + 1; j < c.length; j++)   
+          {  
+            char tmp;  
+            if (c[i] > c[j])   
+            {  
+            tmp = c[i];  
+            c[i] = c[j];  
+            c[j] = tmp;  
+            }  
+          }  
+      }
+      char[] d = B.toCharArray();
+      
+      for (int i = 0; i < d.length; i++)
+      {  
+          for (int j = i + 1; j < d.length; j++)   
+          {  
+            char tmp;  
+            if (d[i] > d[j])   
+            {  
+            tmp = d[i];  
+            d[i] = d[j];  
+            d[j] = tmp;  
+            }  
+          }  
+      }
+      String a = new String (c);
       String b = new String (d);
       if (a.equals(b)) {
-    	  f=true;
+          f=true;
       }
       return f;
-   
-   }
-    public static void main(String[] args) {
-        
-        Scanner sc=new Scanner(System.in);
-        String A=sc.next();
-        String B=sc.next();
-        boolean ret=isAnagram(A,B);
-        if(ret)System.out.println("Anagrams");
-        else System.out.println("Not Anagrams");
-        
+    }
+  public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
     }
 }
+
